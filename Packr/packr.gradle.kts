@@ -264,14 +264,14 @@ publishing {
       if (ngToken != null) {
          val ngUsername = findProperty("NG_ARTIFACT_REPOSITORY_USER") as String? ?: System.getenv("NG_ARTIFACT_REPOSITORY_USER")
          if (isSnapshot) {
-            maven("https://artifactory.nimblygames.com/artifactory/ng-public-snapshot/") {
+            maven("https://oss.sonatype.org/content/repositories/snapshots/") {
                credentials {
                   username = ngUsername
                   password = ngToken
                }
             }
          } else {
-            maven("https://artifactory.nimblygames.com/artifactory/ng-public-release/") {
+            maven("https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
                credentials {
                   username = ngUsername
                   password = ngToken
@@ -291,7 +291,7 @@ publishing {
          artifact(tasks.named("javadocJar").get())
          artifact(tasks.named("sourcesJar").get())
 
-         groupId = project.group as String
+         this.groupId = project.group as String
          artifactId = project.name.toLowerCase() + "-all"
          version = project.version as String
          pom {

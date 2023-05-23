@@ -15,8 +15,8 @@
  */
 
 
-group = "com.badlogicgames.packr"
-version = "4.1.0-SNAPSHOT"
+group = "com.bladecoder.packr"
+version = "4.1.0"
 
 ext["macOsMinimumVersion"] = "10.10"
 
