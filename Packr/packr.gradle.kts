@@ -51,7 +51,7 @@ repositories {
 
    mavenCentral()
    maven(uri("https://oss.sonatype.org/content/repositories/snapshots/"))
-   maven(uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/"))
+   maven(uri("https://oss.sonatype.org/content/repositories/releases/"))
    jcenter()
    gitHubRepositoryForPackr(project)
 }
@@ -345,7 +345,11 @@ publishing {
    }
 }
 
-signing.useGpgCmd()
+signing {
+   val signingKey: String? by project
+   val signingPassword: String? by project
+   useInMemoryPgpKeys(signingKey, signingPassword)
+}
 
 if (isSnapshot) {
    logger.info("Skipping signing")
