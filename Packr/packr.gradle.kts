@@ -51,12 +51,9 @@ repositories {
 
    mavenCentral()
    maven(uri("https://oss.sonatype.org/content/repositories/snapshots/"))
+   maven(uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/"))
    jcenter()
    gitHubRepositoryForPackr(project)
-
-   // temporary for CI publishing until oss.sonatype.org is available for com.libgdx.packr or com.badlogicgames.packr
-   maven("https://artifactory.nimblygames.com/artifactory/ng-public-snapshot/")
-   maven("https://artifactory.nimblygames.com/artifactory/ng-public-release/")
 }
 
 java {
@@ -91,21 +88,21 @@ dependencies {
    runtimeOnly("org.apache.logging.log4j:log4j-core:$log4jVersion")
 
    // Packr launcher executables
-   add(packrLauncherMavenRepositoryExecutables.name, "com.badlogicgames.packr:packrLauncher-linux-x86-64:$version") {
+   add(packrLauncherMavenRepositoryExecutables.name, "com.bladecoder.packr:packrLauncher-linux-x86-64:$version") {
       // Gradle won't download extension free files without this
       artifact {
          this.name = "packrLauncher-linux-x86-64"
          this.type = ""
       }
    }
-   add(packrLauncherMavenRepositoryExecutables.name, "com.badlogicgames.packr:packrLauncher-macos:$version") {
+   add(packrLauncherMavenRepositoryExecutables.name, "com.bladecoder.packr:packrLauncher-macos:$version") {
       // Gradle won't download extension free files without this
       artifact {
          this.name = "packrLauncher-macos"
          this.type = ""
       }
    }
-   add(packrLauncherMavenRepositoryExecutables.name, "com.badlogicgames.packr:packrLauncher-windows-x86-64:$version")
+   add(packrLauncherMavenRepositoryExecutables.name, "com.bladecoder.packr:packrLauncher-windows-x86-64:$version")
    add(packrLauncherExecutablesForCurrentOs.name, project(":PackrLauncher", "currentOsExecutables"))
 }
 

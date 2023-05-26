@@ -361,7 +361,11 @@ publishing {
    }
 }
 
-signing.useGpgCmd()
+signing {
+   val signingKey: String? by project
+   val signingPassword: String? by project
+   useInMemoryPgpKeys(signingKey, signingPassword)
+}
 
 if (isSnapshot) {
    logger.info("Skipping signing ")
