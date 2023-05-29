@@ -31,4 +31,4 @@ jobs:
           ORG_GRADLE_PROJECT_NG_ARTIFACT_REPOSITORY_USER: ${{ secrets.NG_ARTIFACT_REPOSITORY_USER }}
           ORG_GRADLE_PROJECT_signingKey: ${{ secrets.PGP_SECRET }}
           ORG_GRADLE_PROJECT_signingPassword: ${{ secrets.PGP_PASSPHRASE }}
-        run: ./gradlew assemble publish
+        run: ./gradlew assemble Packr:publish
